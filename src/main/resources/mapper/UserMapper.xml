@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sicnu.cjj.myspringboot.mapper.UserMapper">
+    <!-- 得到登录用户基本信息 -->
+    <!-- List<GoodsEntity> findList();  -->
+    <select id="findUser" parameterType="String" resultType="sicnu.cjj.myspringboot.entity.User" >
+        select * from users where account=#{account}
+    </select>
+    <!--忘记密码-->
+    <update id="updatepwd" parameterType="String" >
+        update users set password=#{newpwd} where account=#{account}
+    </update>
+    <!--验证身份证号-->
+    <select id="findIdentity" parameterType="String" resultType="String">
+        select identity from users where account=#{account}
+    </select>
+
+    <!--测试根据account 查询user_id-->
+    <select id="getuser_id" parameterType="String" resultType="sicnu.cjj.myspringboot.entity.User">
+        select * from users where account=#{account}
+    </select>
+</mapper>

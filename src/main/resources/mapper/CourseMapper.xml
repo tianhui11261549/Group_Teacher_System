@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sicnu.cjj.myspringboot.mapper.CourseMapper">
+    <select id="getAllUser" parameterType="String" resultType="sicnu.cjj.myspringboot.entity.CourseBean">
+        SELECT name,course_name,class_num from course where class_id in (select class_id from student where name= (select name from users where account= #{account}))
+    </select>
+<!--    <select id="getAllContent" parameterType="String" resultType="com.example.test.bean.ContentBean">-->
+<!--        SELECT ques_desc FROM ques_table where ques_id in (select ques_id from student_evaluation where teacher_id = (select teacher_id from teacher_file where name = #{name})) and mytable_id = 2-->
+<!--    </select>-->
+
+<!--    <select id="getques_id" parameterType="String" resultType="int">-->
+<!--        select min(ques_id) from student_evaluation where teacher_id = (select teacher_id from teacher_file where name = #{name})-->
+<!--    </select>-->
+<!--    &lt;!&ndash;根据ID修改评分信息，返回数据库操作影响行数，为0则是失败&ndash;&gt;-->
+<!--    <update id="updateContent" parameterType="com.example.test.bean.ContentBean" >-->
+<!--        UPDATE student_evaluation set answer = #{gradeid} where ques_id = #{id}-->
+<!--    </update>-->
+</mapper>
